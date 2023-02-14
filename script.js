@@ -1,24 +1,35 @@
 import * as THREE from 'three';
-//import { OrbitControls } from '@/node_modules/three/examples/jsm/controls/OrbitControls';
+//import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
-function main(){
-  const canvas = document.querySelector('#c');
-  const render = new THREE.WebGLRender({canvas});
-}
+const container = document.querySelector('#Scene');
 
-//Perspective Camera
-const fov = 75; // width of render distance
-const aspect = window.innerWidth / window.innerHeight; // canvas default aspect
-const near = 0.1; // min render distance
-const far = 5; // max render distance
-const camera = new THREE.PerspectiveCamera(fov, aspect, near, far); // Sets Camera
-camera.position.z(2); // Camera Position on Coordinate Plane
-
-// !!Scene!!
+//Scene
 const scene = new THREE.Scene();
+scene.background = new Color('skyblue');
 
-const renderer = new THREE.WebGLRenderer(); // Renderer
-renderer.setSize(window.innerWidth, window.innerHeight); // Renderer Size
-document.body.appendChild(renderer.domElement);
+//Camera
+const fov = 35;
+const aspect = container.clientWidth / container.clientHeight;
+const near = 0.1; // the near clipping plane
+const far = 100; // the far clipping plane
+const camera = new PerspectiveCamera(fov, aspect, near, far);
+console.log("running");
+camera.position.set(0,0,10);
 
+//Cube
+const length = 1;
+const width = 1;
+const depth = 1;
+const geometry = new BoxBufferGeometry(length, width, depth);
+const material = new MeshBasicMaterial({color: x44ax88});
+const cube = new Mesh(geometry,material);
+console.log("running");
+scene.add(cube);
+
+//Renderer
+const renderer = new WebGLRenderer();
+renderer.setSize(container.clientWidth, container.clientHeight);
+renderer.setPixelRatio(window.devicePixelRatio);
+container.append(renderer.domElement);
+console.log("running");
 renderer.render(scene, camera);

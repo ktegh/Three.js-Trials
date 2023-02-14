@@ -2,6 +2,9 @@ body {
   margin: 0;
   overflow: hidden;
 }
-#c{
-  background-color: black;
+#Scene{
+  background-color: skyblue;
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
