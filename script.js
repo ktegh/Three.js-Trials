@@ -6,8 +6,6 @@ function main(){
   const render = new THREE.WebGLRender({canvas});
 }
 
-
-
 //Perspective Camera
 const fov = 75; // width of render distance
 const aspect = window.innerWidth / window.innerHeight; // canvas default aspect
