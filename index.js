@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-//import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
 const container = document.querySelector('#Scene');
 
@@ -8,13 +8,13 @@ const scene = new THREE.Scene();
 //scene.background = new Color('skyblue');
 
 //Camera
-const fov = 35;
-const aspect = container.clientWidth / container.clientHeight;
+const fov = 75;
+const aspect = window.innerWidth / window.innerHeight;
 const near = 0.1; // the near clipping plane
-const far = 100; // the far clipping plane
+const far = 1000; // the far clipping plane
 const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
 //console.log("running");
-camera.position.set(0,0,10);
+camera.position.set(0,0,2);
 
 //Cube
 const length = 1;
@@ -28,8 +28,8 @@ scene.add(cube);
 
 //Renderer
 const renderer = new THREE.WebGLRenderer();
-renderer.setSize(container.clientWidth, container.clientHeight);
+renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setPixelRatio(window.devicePixelRatio);
-container.append(renderer.domElement);
+document.body.appendChild(renderer.domElement);
 //console.log("running");
 renderer.render(scene, camera);
