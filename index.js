@@ -23,9 +23,19 @@ const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
 //Orbit Controls
 const controls = new OrbitControls(camera, renderer.domElement)
 
-camera.position.set(0,0,2);
+camera.position.set(0,0,5);
 controls.update();
 
+const light1 = new THREE.DirectionalLight( 0xffffff, 1 );
+const light2 = new THREE.DirectionalLight( 0xffffff, 1 );
+const light3 = new THREE.DirectionalLight( 0xffffff, 1 );
+light2.position.set(0,0,5);
+light2.target.position.set(0,0,0);
+light2.position.set(0,0,-5);
+light2.target.position.set(0,0,0);
+scene.add(light1);
+scene.add(light2);
+scene.add(light2.target);
 
 
 //Cube
@@ -33,11 +43,20 @@ const length = 1;
 const width = 1;
 const depth = 1;
 const geometry = new THREE.BoxGeometry(length, width, depth);
-const material = new THREE.MeshBasicMaterial({color: 0xff0000});
+const material = new THREE.MeshPhongMaterial({color: 0x00ff0000});
 const cube = new THREE.Mesh(geometry,material);
 //console.log("running");
 scene.add(cube);
 
 
 //console.log("running");
-renderer.render(scene, camera);
+function animate() {
+
+	requestAnimationFrame( animate );
+  
+  cube.rotation.x += 0.01;
+  cube.rotation.y += 0.01;  
+
+	renderer.render( scene, camera );
+}
+animate();
