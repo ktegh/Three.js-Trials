@@ -28,6 +28,7 @@ const controls = new OrbitControls(camera, renderer.domElement);
 camera.position.set(0, 0, 5);
 controls.update();
 
+//light
 const light1 = new THREE.DirectionalLight(0xffffff, 1);
 const light2 = new THREE.DirectionalLight(0xffffff, 1);
 const light3 = new THREE.DirectionalLight(0xffffff, 1);
